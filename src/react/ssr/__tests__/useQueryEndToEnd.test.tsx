@@ -100,11 +100,11 @@ it("should not cause a hydration mismatch when both ssr: false and skip: true ar
 
   expect(hydrationErrors).toHaveLength(0);
 
-  const wrongResultInRender = rendered.find(
-    ({ data, loading, networkStatus }) =>
-      data !== "<undefined>" || loading !== false || networkStatus !== 7
-  );
-  expect(wrongResultInRender).toBeUndefined();
+  expect(
+    rendered.every(({ data, loading, networkStatus }) => {
+      return data === "<undefined>" && loading === false && networkStatus === 7;
+    })
+  ).toBe(true);
 
   root.unmount();
   document.body.removeChild(container);
