@@ -591,12 +591,7 @@ function useResult<TData, TVariables extends OperationVariables>(
       [observable, resultData]
     ),
     () => resultData.current,
-    () => {
-      if (ssr === false || observable.options.fetchPolicy === "no-cache") {
-        return useQuery.ssrDisabledResult;
-      }
-      return resultData.current;
-    }
+    () => (ssr === false || observable.options.fetchPolicy === "no-cache") ? useQuery.ssrDisabledResult : resultData.current
   );
 }
 
