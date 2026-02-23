@@ -97,6 +97,7 @@ const standardReact18Config = {
   testPathIgnorePatterns: [
     ...reactSharedTestFileIgnoreList,
     "src/react/ssr/__tests__/prerenderStatic.test.tsx",
+    "src/react/ssr/__tests__/useQueryEndToEnd.test.tsx",
   ],
   moduleNameMapper: {
     ...defaults.moduleNameMapper,
